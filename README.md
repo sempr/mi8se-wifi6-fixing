@@ -1,5 +1,18 @@
 # Magisk WiFi Bonding
 
+实际用法就是 clone 本项目 并且在项目目录执行下面的命令 得到 wifi_bouding.zip
+然后复制到手机上用面具安装进手机就行了。
+
+```
+wget https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -O META-INF/com/google/android/update-binary
+zip -9 -x "*.git*" -r ../wifi_bonding.zip ./
+sha256sum ../wifi_bonding.zip > ../wifi_bonding.zip.sha256sum
+```
+
+
+
+### 以下是原始内容
+
 Double your bandwith on your Qualcomm devices!
 
 高通设备 WiFi 增强模块。
