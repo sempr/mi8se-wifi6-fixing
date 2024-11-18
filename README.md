@@ -1,9 +1,17 @@
 # Magisk WiFi Bonding
 
-实际用法就是 clone 本项目 并且在项目目录执行下面的命令 得到 wifi_bouding.zip
-然后复制到手机上用面具安装进手机就行了。
+## 本修改内容用于关闭小米8SE去尝试扫描连接52及以上属于DFS的频段
 
-```
+不关掉会出现的故障情况是，手机连上了一个有160MHz频宽的wifi，显示连接速率是1733Mbps(160MHz频宽)，但实际上完全无法上网，因为硬件上只支持最高866Mbps(80MHz频宽)的连接
+因此 如果一个开了Wifi6 160MHz频宽的路由器，小米8SE是连上了但上不了网的，因此需要关掉。
+
+实际用法就是 clone 本项目 并且在项目目录执行下面的命令 得到 wifi_bouding.zip
+然后复制到手机上用面具(magisk)安装进手机就行了。或者使用release里用github actions编译过的版本。
+
+声明: 这个修改在我自己的6+128的小米8SE上面是一切正常的，没有测试过更多的手机，使用时请自担风险。
+
+以下是打包脚本
+```bash
 wget https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer.sh -O META-INF/com/google/android/update-binary
 zip -9 -x "*.git*" -r ../wifi_bonding.zip ./
 sha256sum ../wifi_bonding.zip > ../wifi_bonding.zip.sha256sum
@@ -11,7 +19,7 @@ sha256sum ../wifi_bonding.zip > ../wifi_bonding.zip.sha256sum
 
 
 
-### 以下是原始内容
+### 以下是原项目的原始内容
 
 Double your bandwith on your Qualcomm devices!
 
