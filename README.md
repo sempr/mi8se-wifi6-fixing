@@ -17,9 +17,18 @@ zip -9 -x "*.git*" -r ../wifi_bonding.zip ./
 sha256sum ../wifi_bonding.zip > ../wifi_bonding.zip.sha256sum
 ```
 
+### 我做了什么
+
+参照[修改代码](https://github.com/sempr/mi8se-wifi6-fixing/blob/master/customize.sh)
+
+其实就只是修改了 `WCNSS_qcom_cfg.ini`里面的 `gEnableDFSChnlScan` 和 `gAllowDFSChannelRoam` 两个配置项 这两个项就是让设备不要去扫描和使用DFS相关的频段，在160MHz出来之前 5G wifi的可用频段应该只有 36/40/44/48 149/153/157/161/165 这一些 52/56/60/64并不在可用范围之内
+
+```bash
+sed -i '/gEnableDFSChnlScan=/d;/gAllowDFSChannelRoam=/d;s/^END$/gEnableDFSChnlScan=0\ngAllowDFSChannelRoam=0\nEND/g' $MODPATH$CFG
+```
 
 
-### 以下是原项目的原始内容
+## 以下是原项目的原始内容
 
 Double your bandwith on your Qualcomm devices!
 
